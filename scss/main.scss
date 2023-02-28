@@ -1,0 +1,84 @@
+@import "variables";
+@import "functions";
+@import "mixin";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  @include display-flex;
+}
+
+header {
+  padding: 20px;
+  background-color: $bg-dark;
+
+  //header > h1
+  h1 {
+    color: #f6f6f6;
+    text-align: center;
+  }
+}
+
+.section {
+  padding: 30px;
+
+  &-a {
+    @include bg-light;
+    // background-color: $bg-dark;
+    // color: set-text-color($bg-dark);
+  }
+
+  &-b {
+    background-color: $bg-dark;
+    color: rebeccapurple;
+  }
+}
+
+.btn {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: blueviolet;
+  width: 200px;
+  text-align: center;
+  border: 1px solid brown;
+  margin: 20px;
+}
+
+//Tekrar eden kodlarda bu şekilde kullanabiliriz.
+%btn-shared {
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px 20px;
+  width: 200px;
+  text-align: center;
+  border: 1px solid brown;
+  margin: 20px;
+}
+.btn {
+  &-light {
+    @extend %btn-shared;
+    background-color: $bg-light;
+    color: $text-dark;
+    &:hover {
+      background-color: $bg-dark;
+      color: $text-light;
+    }
+  }
+  &-dark {
+    @extend %btn-shared;
+    background-color: $bg-dark;
+    color: $text-light;
+    &:hover {
+      background-color: $bg-light;
+      color: $text-dark;
+    }
+  }
+}
